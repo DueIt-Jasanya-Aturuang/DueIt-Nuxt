@@ -12,9 +12,19 @@ export default defineNuxtConfig({
 
   modules: ['@nuxthq/ui', '@nuxtjs/eslint-module'],
 
-  css: ['~/assets/css/tailwind.css'],
-
   eslint: {
     lintOnStart: false,
+  },
+
+  pages: true,
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/scss/main.scss" as *;',
+        },
+      },
+    },
   },
 })
