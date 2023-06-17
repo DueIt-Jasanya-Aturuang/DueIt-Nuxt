@@ -18,6 +18,11 @@ export default defineNuxtConfig({
 
   pages: true,
 
+  // set dark mode atau light mode
+  colorMode: {
+    preference: 'light',
+  },
+
   vite: {
     css: {
       preprocessorOptions: {
