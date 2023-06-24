@@ -1,0 +1,122 @@
+@font-face {
+  font-family: 'dueit-icon';
+  src:  url('/assets/');
+  src:  url('/assets/#iefix') format('embedded-opentype'),
+    url('/assets/fonts/dueit-icon.ttf?qqc6ip') format('truetype'),
+    url('/assets/fonts/dueit-icon.woff?qqc6ip') format('woff'),
+    url('/assets/fonts/dueit-icon.svg?qqc6ip#dueit-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="dicon-"], [class*=" dicon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'dueit-icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+	vertical-align: middle;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dicon-invest:before {
+  content: "\e905";
+}
+.dicon-make-up:before {
+  content: "\e906";
+}
+.dicon-money-atm-card:before {
+  content: "\e908";
+}
+.dicon-money-wallet:before {
+  content: "\e913";
+}
+.dicon-plus:before {
+  content: "\e914";
+}
+.dicon-profile:before {
+  content: "\e918";
+}
+.dicon-dollar-bag:before {
+  content: "\e91c";
+}
+.dicon-giving-hand:before {
+  content: "\e90d";
+}
+.dicon-love-health:before {
+  content: "\e911";
+}
+.dicon-dollar-circle:before {
+  content: "\e912";
+}
+.dicon-sale-outline:before {
+  content: "\e915";
+}
+.dicon-piggy-bank:before {
+  content: "\e916";
+}
+.dicon-location:before {
+  content: "\e917";
+}
+.dicon-food:before {
+  content: "\e919";
+}
+.dicon-transportation:before {
+  content: "\e91a";
+}
+.dicon-calendar:before {
+  content: "\e91b";
+}
+.dicon-wages:before {
+  content: "\e91e";
+}
+.dicon-rupiahs:before {
+  content: "\e91f";
+}
+.dicon-home:before {
+  content: "\e910";
+}
+.dicon-create:before {
+  content: "\e902";
+}
+.dicon-history:before {
+  content: "\e903";
+}
+.dicon-statistic:before {
+  content: "\e904";
+}
+.dicon-notif-no-fill:before {
+  content: "\e907";
+}
+.dicon-success-no-fill:before {
+  content: "\e909";
+}
+.dicon-success-filled:before {
+  content: "\e90a";
+}
+.dicon-warning-filled:before {
+  content: "\e90b";
+}
+.dicon-warning-no-fill:before {
+  content: "\e90c";
+}
+.dicon-key-outline:before {
+  content: "\e90e";
+}
+.dicon-fingerprint:before {
+  content: "\e90f";
+}
+.dicon-eye-opened:before {
+  content: "\e900";
+}
+.dicon-eye-closed:before {
+  content: "\e901";
+}
