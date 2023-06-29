@@ -1,44 +1,69 @@
 <template>
-  <main class="w-full h-screen">
-    <div class="container mx-auto bg-slate-50 flex place-items-center h-full">
-      <!-- title -->
-      <div class="text-black w-1/2 text-center mx-auto">
-        <div class="flex justify-center items-center mb-2 gap-2">
-          <img src="~assets/img/logo-dueit.png" width="30" />
-          <span class="page-title">Daftar Akun</span>
-        </div>
-        <span
-          >Sudah punya akun?
-          <NuxtLink to="/login" class="text-orange-400"
-            >Masuk di sini</NuxtLink
-          ></span
-        >
-      </div>
-      <!-- form -->
-
-      <!-- with google -->
+  <NuxtLayout name="minified">
+    <div class="container max-w-sm mx-auto flex place-items-center h-screen">
+      <AuthForm>
+        <template #page-title>Masuk Akun</template>
+        <template #form-input>
+          <form action="">
+            <UFormGroup label="Email / Username" class="mb-6">
+              <UInput
+                v-model="username"
+                placeholder="Masukkan email atau username"
+                size="md"
+              />
+            </UFormGroup>
+            <UFormGroup label="Kata Sandi">
+              <UInput
+                v-model="password"
+                :type="state.showPassword ? 'text' : 'password'"
+                placeholder="Masukkan kata sandi akun"
+                size="md"
+                class="relative"
+              >
+                <!-- set icon password tampil/tidak -->
+                <div
+                  class="absolute right-0 top-0 cursor-pointer"
+                  @click="state.showPassword = !state.showPassword"
+                >
+                  <i
+                    :class="
+                      state.showPassword
+                        ? 'dicon-eye-opened'
+                        : 'dicon-eye-closed'
+                    "
+                    class="py-2 px-3"
+                  ></i>
+                </div>
+              </UInput>
+            </UFormGroup>
+            <div class="w-full flex justify-end mt-4">
+              <NuxtLink to="/" class="text-[#B6AE03] text-sm"
+                >Lupa Password?</NuxtLink
+              >
+            </div>
+            <ButtonsCommon class="w-full mt-[34px]"></ButtonsCommon>
+          </form>
+        </template>
+      </AuthForm>
     </div>
-  </main>
+  </NuxtLayout>
 </template>
 
 <script setup>
-// const axios = useNuxtApp().$axios
+import { reactive } from 'vue'
 
-// onMounted(() => {
-//   axios.get('/api/hello').then((response) => {
-//     console.log('response:', response)
-//   })
-// })
+// v-model untuk menampung data form
+const username = ref('')
+const password = ref('')
+
+// state untuk menampilkan password
+const state = reactive({
+  showPassword: false,
+})
 </script>
 
 <style lang="scss" scoped>
-main {
-  background: linear-gradient(183.06deg, #ffffff -15.68%, #fffdd6 137.87%);
-}
-
-.page-title {
-  color: #b6ae03;
-  font-size: 20px;
-  font-weight: 700;
+.container {
+  padding: 0 33px;
 }
 </style>
