@@ -1,6 +1,12 @@
 <template>
   <NuxtLayout name="minified">
-    <div class="container max-w-sm mx-auto flex place-items-center h-screen">
+    <SplashScreen
+      v-if="state.showSplashScreen"
+      @close-splash="skipSplashScreen"
+    />
+    <div
+      class="container relative max-w-sm mx-auto flex place-items-center h-screen"
+    >
       <AuthForm>
         <template #page-title>Masuk Akun</template>
         <template #form-input>
@@ -51,6 +57,7 @@
 
 <script setup>
 import { reactive } from 'vue'
+import SplashScreen from '~/components/SplashScreen.vue'
 
 // v-model untuk menampung data form
 const username = ref('')
@@ -59,7 +66,12 @@ const password = ref('')
 // state untuk menampilkan password
 const state = reactive({
   showPassword: false,
+  showSplashScreen: true,
 })
+
+const skipSplashScreen = () => {
+  state.showSplashScreen = false
+}
 </script>
 
 <style lang="scss" scoped>
