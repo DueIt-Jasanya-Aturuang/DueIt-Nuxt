@@ -10,7 +10,7 @@
       <AuthForm>
         <template #page-title>Masuk Akun</template>
         <template #form-input>
-          <form action="">
+          <form action="/auth/otp">
             <UFormGroup label="Email / Username" class="mb-6">
               <UInput
                 v-model="username"
