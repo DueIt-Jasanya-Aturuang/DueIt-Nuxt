@@ -23,13 +23,16 @@ export default defineNuxtConfig({
     preference: 'light',
   },
 
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/scss/main.scss" as *;',
-        },
-      },
-    },
-  },
+  // main file scss
+  css: ['~/assets/scss/main.scss'],
+
+  // vite: {
+  //   css: {
+  //     preprocessorOptions: {
+  //       scss: {
+  //         additionalData: '@use "@/assets/scss/main.scss" as *;',
+  //       },
+  //     },
+  //   },
+  // },
 })

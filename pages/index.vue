@@ -1,20 +1,16 @@
 <template>
-  <NuxtLayout name="minified">
-    <SplashScreen
-      v-if="state.showSplashScreen"
-      @close-splash="skipSplashScreen"
-    />
-    <div
-      class="container relative max-w-sm mx-auto flex place-items-center h-screen"
+  <SplashScreen
+    v-if="state.showSplashScreen"
+    @close-splash="skipSplashScreen"
+  />
+  <div class="container relative flex place-items-center">
+    <p>Ini homepage sebelum login</p>
+    <button
+      class="ml-8 border bg-amber-300 p-2 rounded hover:bg-slate-700 hover:text-white"
     >
-      <p>Ini homepage sebelum login</p>
-      <button
-        class="ml-8 border bg-amber-300 p-2 rounded hover:bg-slate-700 hover:text-white"
-      >
-        <NuxtLink to="/login"> Login </NuxtLink>
-      </button>
-    </div>
-  </NuxtLayout>
+      <NuxtLink to="/login"> Login </NuxtLink>
+    </button>
+  </div>
 </template>
 
 <script setup>
