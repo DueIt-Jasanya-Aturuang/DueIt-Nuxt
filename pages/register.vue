@@ -6,7 +6,7 @@
         <template #cto>
           <div>
             Sudah punya akun?
-            <NuxtLink to="/" class="text-[#B6AE03]">Masuk disini</NuxtLink>
+            <NuxtLink to="/login" class="text-[#B6AE03]">Masuk disini</NuxtLink>
           </div>
         </template>
         <template #form-input>
