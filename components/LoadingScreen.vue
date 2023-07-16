@@ -8,7 +8,8 @@
       />
       <div class="text-center">
         <p class="mb-0">
-          Dibuat oleh <span class="text-[#1F7CB7]">Jasanya.Tech</span>
+          Dibuat oleh
+          <a href="https://jasanya.tech" class="text-[#1F7CB7]">Jasanya.Tech</a>
         </p>
       </div>
     </div>
