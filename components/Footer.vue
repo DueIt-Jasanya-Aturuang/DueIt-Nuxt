@@ -1,27 +1,32 @@
 <template>
-  <footer class="footer w-full flex justify-between">
+  <footer class="footer flex justify-between">
     <div class="flex">
-      <div class="footer-nav">
-        <i class="dicon-home-fill"></i>
+      <NuxtLink to="/" class="footer-nav">
+        <Icon
+          name="ic:round-home"
+          :color="$route.path === '/' ? '#c7b407' : ''"
+          size="2em"
+        />
+        <!-- <img src="~assets/icons/home-fill.svg" alt="" /> -->
         <span>Home</span>
-      </div>
-      <div class="footer-nav">
+      </NuxtLink>
+      <NuxtLink to="/history" class="footer-nav">
         <i class="dicon-history"></i>
         <span>Riwayat</span>
-      </div>
+      </NuxtLink>
     </div>
     <div class="plus-circle bg-[#fffdcd] flex justify-center items-center">
       <img src="~/assets/icons/plus-colored.svg" />
     </div>
     <div class="flex">
-      <div class="footer-nav">
+      <NuxtLink to="/report" class="footer-nav">
         <i class="dicon-statistic"></i>
         <span>Laporan</span>
-      </div>
-      <div class="footer-nav">
+      </NuxtLink>
+      <NuxtLink to="/profile" class="footer-nav">
         <i class="dicon-profile"></i>
         <span>Profil</span>
-      </div>
+      </NuxtLink>
     </div>
   </footer>
 </template>
@@ -30,7 +35,7 @@
 
 <style lang="scss" scoped>
 .footer {
-  padding: 14px 7px;
+  padding: 0px 7px 14px;
   border-radius: 15px 15px 0px 0px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 2px 5px 0px rgba(0, 0, 0, 0.1), 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
@@ -43,14 +48,31 @@
   justify-content: flex-end;
   align-items: center;
   text-align: center;
-  width: 70px;
+  width: 76px;
+
+  span {
+    font-size: 12px;
+  }
 }
 
 .plus-circle {
-  height: 65px;
-  width: 65px;
+  min-height: 65px;
+  min-width: 65px;
   border-radius: 50%;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
   transform: translateY(-35px);
+}
+
+[class^='dicon-'] {
+  font-size: 1.55em;
+  padding-bottom: 3px;
+}
+
+a {
+  &.router-link-active {
+    [class^='dicon-'] {
+      color: #c7b407;
+    }
+  }
 }
 </style>

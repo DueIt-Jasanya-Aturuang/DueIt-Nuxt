@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm mx-auto">
+  <div class="sm:max-w-sm sm:mx-auto w-full">
     <!-- body content -->
     <div>
       <slot />
@@ -19,6 +19,7 @@ import Footer from '~/components/Footer.vue'
 .footer-wrapper {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: inherit;
+  max-width: inherit;
 }
 </style>

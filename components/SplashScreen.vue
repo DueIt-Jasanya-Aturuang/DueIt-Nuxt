@@ -1,5 +1,5 @@
 <template>
-  <div class="splash-screen h-screen absolute p-6 top-0">
+  <div class="splash-screen h-screen absolute p-6 top-0 left-0 w-full">
     <div class="max-w-sm mx-auto h-full flex flex-col justify-between">
       <!-- header -->
       <div class="flex flex-row justify-between">
