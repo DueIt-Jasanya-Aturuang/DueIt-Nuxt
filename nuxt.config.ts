@@ -29,15 +29,15 @@ export default defineNuxtConfig({
   },
 
   // main file scss
-  css: ['~/assets/scss/main.scss'],
+  // css: ['~/assets/scss/main.scss'],
 
-  // vite: {
-  //   css: {
-  //     preprocessorOptions: {
-  //       scss: {
-  //         additionalData: '@use "@/assets/scss/main.scss" as *;',
-  //       },
-  //     },
-  //   },
-  // },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/assets/scss/main.scss";',
+        },
+      },
+    },
+  },
 })

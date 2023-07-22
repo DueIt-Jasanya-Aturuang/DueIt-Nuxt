@@ -62,7 +62,7 @@
   min-height: 65px;
   min-width: 65px;
   border-radius: 50%;
-  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 20px 4px rgba(0, 0, 0, 0.1);
   transform: translateY(-20px);
 
   .bottom-line {

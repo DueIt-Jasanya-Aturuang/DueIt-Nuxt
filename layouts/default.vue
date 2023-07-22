@@ -1,12 +1,14 @@
 <template>
-  <div class="sm:max-w-sm sm:mx-auto w-full">
-    <!-- body content -->
-    <div>
-      <slot />
-    </div>
-    <!-- footer -->
-    <div class="footer-wrapper max-w-sm">
-      <Footer />
+  <div class="bg-home">
+    <div class="sm:max-w-sm sm:mx-auto w-full">
+      <!-- body content -->
+      <div>
+        <slot />
+      </div>
+      <!-- footer -->
+      <div class="footer-wrapper max-w-sm">
+        <Footer />
+      </div>
     </div>
   </div>
 </template>
@@ -21,5 +23,9 @@ import Footer from '~/components/Footer.vue'
   bottom: 0;
   width: inherit;
   max-width: inherit;
+}
+
+.bg-home {
+  background: linear-gradient(168.62deg, #ffffff 0%, #f7ffc2 122.31%);
 }
 </style>
