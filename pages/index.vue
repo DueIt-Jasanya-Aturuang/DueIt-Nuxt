@@ -3,13 +3,32 @@
     v-if="state.showSplashScreen"
     @close-splash="skipSplashScreen"
   />
-  <div class="container relative flex place-items-center">
-    <p>Ini homepage sebelum login</p>
-    <button
-      class="ml-8 border bg-amber-300 p-2 rounded hover:bg-slate-700 hover:text-white"
-    >
-      <NuxtLink to="/login"> Login </NuxtLink>
-    </button>
+  <div class="relative py-4 px-[22px]">
+    <!-- header -->
+    <div class="header flex justify-between items-center">
+      <div class="flex gap-[10px] items-center">
+        <div
+          class="w-[50px] h-[50px] bg-[#F0F0F0] rounded-full flex justify-center items-center text-xl"
+        >
+          <i class="dicon-camera text-[#D3D3D3]"></i>
+        </div>
+        <div>
+          <p class="text-xs">Hello, Your Name</p>
+          <p>Motivation desc.</p>
+        </div>
+      </div>
+      <div class="notif">
+        <i class="dicon-notif-no-fill text-2xl"></i>
+      </div>
+    </div>
+
+    <!-- end header -->
+
+    <!-- circle chart -->
+
+    <!-- carousel -->
+
+    <!-- catatan keuangan -->
   </div>
 </template>
 

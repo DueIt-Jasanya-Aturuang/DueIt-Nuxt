@@ -15,15 +15,18 @@
         <span>Riwayat</span>
       </NuxtLink>
     </div>
-    <div class="plus-circle bg-[#fffdcd] flex justify-center items-center">
+    <div
+      class="plus-circle bg-[#fffdcd] flex justify-center items-center relative"
+    >
       <img src="~/assets/icons/plus-colored.svg" />
+      <div class="bottom-line absolute bottom-[-24px] bg-[#FFFDCD]"></div>
     </div>
     <div class="flex">
       <NuxtLink to="/report" class="footer-nav">
         <i class="dicon-statistic"></i>
         <span>Laporan</span>
       </NuxtLink>
-      <NuxtLink to="/profile" class="footer-nav">
+      <NuxtLink to="/login" class="footer-nav">
         <i class="dicon-profile"></i>
         <span>Profil</span>
       </NuxtLink>
@@ -48,7 +51,7 @@
   justify-content: flex-end;
   align-items: center;
   text-align: center;
-  width: 76px;
+  padding: 0 15px;
 
   span {
     font-size: 12px;
@@ -60,7 +63,12 @@
   min-width: 65px;
   border-radius: 50%;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
-  transform: translateY(-35px);
+  transform: translateY(-20px);
+
+  .bottom-line {
+    height: 3px;
+    width: 140%;
+  }
 }
 
 [class^='dicon-'] {
