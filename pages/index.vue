@@ -24,7 +24,7 @@
     <!-- end header -->
 
     <!-- circle chart -->
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center mb-3">
       <div class="text-left">
         <p class="mb-[10px] text-sm">Rencana Pengeluaran</p>
         <button
@@ -34,7 +34,7 @@
         </button>
         <div class="text-[#B6AE03] mt-5">
           <p class="text-2xl font-semibold">
-            Rp{{ state.showSaldo ? '1.000.000' : '•••••••' }}
+            Rp{{ state.showSaldo ? '1.000.000' : ' •••• •••• ' }}
             <i
               class="pb-2"
               :class="state.showSaldo ? 'dicon-eye-closed' : 'dicon-eye-opened'"
@@ -49,7 +49,18 @@
     </div>
     <!-- end circle chart -->
 
-    <!-- carousel -->
+    <!-- carousel / slider -->
+    <Swiper
+      :slides-per-view="2"
+      :free-mode="true"
+      :space-between="5"
+      :slides-per-group="1"
+    >
+      <SwiperSlide v-for="x in 3" :key="x">
+        <HomepageSliderCategory />
+      </SwiperSlide>
+    </Swiper>
+    <!-- end carousel -->
 
     <!-- catatan keuangan -->
   </div>

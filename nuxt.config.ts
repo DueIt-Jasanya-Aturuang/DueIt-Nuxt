@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     '@nuxtjs/eslint-module',
     // dapat menggunakan semua icon di https://icones.js.org/
     'nuxt-icon',
+    'nuxt-swiper',
   ],
 
   eslint: {
