@@ -50,16 +50,7 @@
     <!-- end circle chart -->
 
     <!-- carousel / slider -->
-    <Swiper
-      :slides-per-view="2"
-      :free-mode="true"
-      :space-between="5"
-      :slides-per-group="1"
-    >
-      <SwiperSlide v-for="x in 3" :key="x">
-        <HomepageSliderCategory />
-      </SwiperSlide>
-    </Swiper>
+    <HomepageSliderCategory />
     <!-- end carousel -->
 
     <!-- catatan keuangan -->

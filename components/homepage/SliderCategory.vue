@@ -1,44 +1,45 @@
 <template>
-  <div
-    class="card-category text-white flex flex-col justify-between"
-    :style="`--terpakai: 5`"
+  <Swiper
+    :slides-per-view="'auto'"
+    :free-mode="true"
+    :space-between="5"
+    :pagination="{ clickable: true }"
   >
-    <div class="flex justify-between items-center">
-      <p class="text-xs font-semibold">Konsumsi</p>
-      <p class="text-[10px] font-bold">5%</p>
-    </div>
-    <p class="font-medium">Rp100.000</p>
-    <div class="persentase h-[14px] border border-white rounded-lg relative">
-      <div
-        class="progress h-[14px] border border-white rounded-lg absolute"
-      ></div>
-    </div>
-    <p class="text-[9px] font-bold">terpakai 5.000</p>
-  </div>
+    <SwiperSlide v-for="data in dataSpending" :key="data">
+      <HomepageCategory :data-category="data" />
+    </SwiperSlide>
+  </Swiper>
 </template>
 
-<script setup></script>
+<script setup>
+const dataSpending = [
+  {
+    id: 1,
+    kategori: 'Konsumsi',
+    total: 100000,
+    terpakai: 5000,
+  },
+  {
+    id: 2,
+    kategori: 'Kendaraan',
+    total: 150000,
+    terpakai: 30000,
+  },
+  {
+    id: 3,
+    kategori: 'Kesehatan',
+    total: 300000,
+    terpakai: 170000,
+  },
+]
+</script>
 
 <style lang="scss" scoped>
-.card-category {
-  width: 118px;
-  height: 118px;
-  background: linear-gradient(
-    146.66deg,
-    #ff4b77 -19.94%,
-    rgba(244, 62, 171, 0.89) 118.12%
-  );
-  box-shadow: 0px 1px 3px 0px #00000026;
-  border-radius: 20px;
-  padding: 14.5px 9px;
-}
+.swiper {
+  margin-right: -22px;
 
-.progress {
-  top: -1px;
-  left: -0.5px;
-  background: linear-gradient(270deg, #fc4e8e -5.1%, #ffb8d6 172.45%),
-    linear-gradient(0deg, #fff2f8, #fff2f8);
-  // width: 5%;
-  width: calc((5000 / 100000) * 100%);
+  .swiper-slide {
+    width: auto !important;
+  }
 }
 </style>
