@@ -42,7 +42,7 @@ const dataSpending = [
 
 <style lang="scss" scoped>
 .swiper {
-  // margin-right: -22px;
+  // margin-right: -16px;
 
   .swiper-slide {
     width: auto !important;

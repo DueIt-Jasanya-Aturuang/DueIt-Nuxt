@@ -3,7 +3,7 @@
     v-if="state.showSplashScreen"
     @close-splash="skipSplashScreen"
   />
-  <div class="relative py-4 px-[22px]">
+  <div class="relative p-4">
     <!-- header -->
     <div class="header flex justify-between items-center mb-3">
       <div class="flex gap-[10px] items-center">
@@ -54,6 +54,38 @@
     <!-- end carousel -->
 
     <!-- catatan keuangan -->
+    <div class="mt-5">
+      <div class="flex justify-between items-center mb-4">
+        <div class="font-medium">Catatan Keuangan</div>
+        <div>
+          <NuxtLink to="/" class="text-[#938C02] font-medium text-xs"
+            >Lihat Detail</NuxtLink
+          >
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="card-catatan">
+          <div class="flex justify-between items-center mb-[10px]">
+            <i class="dicon-rupiahs text-3xl text-[#1F7CB7]"></i>
+            <span class="text-[#7C7C7C] text-2xl">•••</span>
+          </div>
+          <p class="text-sm mb-[10px]">Jumlah Anggaran</p>
+          <p class="text-[#67BE20] font-medium">
+            <span class="text-sm">Rp</span>550.000
+          </p>
+        </div>
+        <div class="card-catatan">
+          <div class="flex justify-between items-center mb-[10px]">
+            <i class="dicon-circle-wallet text-3xl text-[#1F7CB7]"></i>
+            <span class="text-[#7C7C7C] text-2xl">•••</span>
+          </div>
+          <p class="text-sm mb-[10px]">Sisa Anggaran</p>
+          <p class="text-[#DC4C55] font-medium">
+            <span class="text-sm">Rp</span>450.000
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -76,5 +108,12 @@ const skipSplashScreen = () => {
 <style lang="scss" scoped>
 .container {
   padding: 0 33px;
+}
+
+.card-catatan {
+  background-color: #f9ffeb;
+  box-shadow: 0px 1px 3px 0px #00000026;
+  padding: 12px;
+  border-radius: 16px;
 }
 </style>
