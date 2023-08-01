@@ -36,7 +36,7 @@
             </UInput>
           </UFormGroup>
           <div class="w-full flex justify-end mt-4">
-            <NuxtLink to="/" class="text-[#B6AE03] text-sm"
+            <NuxtLink to="/lupa-password" class="text-[#B6AE03] text-sm"
               >Lupa Password?</NuxtLink
             >
           </div>
