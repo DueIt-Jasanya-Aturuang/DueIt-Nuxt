@@ -1,7 +1,7 @@
 <template>
-  <footer class="footer flex justify-between">
+  <div class="menu flex justify-between">
     <div class="flex">
-      <NuxtLink to="/" class="footer-nav">
+      <NuxtLink to="/" class="menu-nav">
         <Icon
           name="ic:round-home"
           :color="$route.path === '/' ? '#c7b407' : ''"
@@ -10,7 +10,7 @@
         <!-- <img src="~assets/icons/home-fill.svg" alt="" /> -->
         <span>Home</span>
       </NuxtLink>
-      <NuxtLink to="/history" class="footer-nav">
+      <NuxtLink to="/history" class="menu-nav">
         <i class="dicon-history"></i>
         <span>Riwayat</span>
       </NuxtLink>
@@ -22,22 +22,22 @@
       <div class="bottom-line absolute bottom-[-24px] bg-[#FFFDCD]"></div>
     </div>
     <div class="flex">
-      <NuxtLink to="/report" class="footer-nav">
+      <NuxtLink to="/report" class="menu-nav">
         <i class="dicon-statistic"></i>
         <span>Laporan</span>
       </NuxtLink>
-      <NuxtLink to="/login" class="footer-nav">
+      <NuxtLink to="/login" class="menu-nav">
         <i class="dicon-profile"></i>
         <span>Profil</span>
       </NuxtLink>
     </div>
-  </footer>
+  </div>
 </template>
 
 <script setup></script>
 
 <style lang="scss" scoped>
-.footer {
+.menu {
   padding: 0px 7px 14px;
   border-radius: 15px 15px 0px 0px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
@@ -45,7 +45,7 @@
   background-color: #fefefe;
 }
 
-.footer-nav {
+.menu-nav {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

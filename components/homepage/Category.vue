@@ -54,7 +54,7 @@ const getClassBg = id => {
   border-radius: 20px;
   padding: 14.5px 9px;
   .progress {
-    top: -1px;
+    top: -0.5px;
     left: -0.5px;
     width: var(--terpakai);
   }

@@ -6,16 +6,16 @@
       <div>
         <slot />
       </div>
-      <!-- footer -->
-      <div class="footer-wrapper max-w-sm">
-        <Footer />
+      <!-- menu nav (mobile) -->
+      <div class="menu-wrapper max-w-sm">
+        <MainMenu />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Footer from '~/components/Footer.vue'
+import MainMenu from '~/components/MainMenu.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -33,7 +33,7 @@ import Footer from '~/components/Footer.vue'
   left: 0;
 }
 
-.footer-wrapper {
+.menu-wrapper {
   position: fixed;
   bottom: 0;
   width: inherit;
