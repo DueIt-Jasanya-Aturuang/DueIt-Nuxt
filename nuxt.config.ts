@@ -10,7 +10,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxthq/ui', '@nuxtjs/eslint-module'],
+  modules: [
+    '@nuxthq/ui',
+    '@nuxtjs/eslint-module',
+    // dapat menggunakan semua icon di https://icones.js.org/
+    'nuxt-icon',
+    'nuxt-swiper',
+  ],
 
   eslint: {
     lintOnStart: false,
@@ -23,11 +29,14 @@ export default defineNuxtConfig({
     preference: 'light',
   },
 
+  // main file scss
+  // css: ['~/assets/scss/main.scss'],
+
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "@/assets/scss/main.scss" as *;',
+          additionalData: '@import "@/assets/scss/main.scss";',
         },
       },
     },

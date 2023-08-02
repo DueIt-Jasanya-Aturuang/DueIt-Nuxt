@@ -3,7 +3,9 @@
     <!-- title -->
     <div class="text-black text-center mb-14">
       <div class="flex justify-center items-center mb-4 gap-3">
-        <img src="~assets/img/logo-dueit.svg" width="40" />
+        <NuxtLink to="/">
+          <img src="~assets/img/logo-dueit.svg" width="40" />
+        </NuxtLink>
         <span class="page-title">
           <slot name="page-title">Masuk Akun</slot>
         </span>

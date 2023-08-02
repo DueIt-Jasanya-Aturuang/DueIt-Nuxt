@@ -1,10 +1,12 @@
+// Generate pakai icomoon.io
+
 @font-face {
   font-family: 'dueit-icon';
-  src: url('/assets/');
-  src: url('/assets/#iefix') format('embedded-opentype'),
-    url('/assets/fonts/dueit-icon.ttf?qqc6ip') format('truetype'),
-    url('/assets/fonts/dueit-icon.woff?qqc6ip') format('woff'),
-    url('/assets/fonts/dueit-icon.svg?qqc6ip#dueit-icon') format('svg');
+  src: url('/assets/fonts/dueit-icon.eot?pco15f');
+  src: url('/assets/fonts/dueit-icon.eot?pco15f#iefix') format('embedded-opentype'),
+    url('/assets/fonts/dueit-icon.ttf?pco15f') format('truetype'),
+    url('/assets/fonts/dueit-icon.woff?pco15f') format('woff'),
+    url('/assets/fonts/dueit-icon.svg?pco15f#dueit-icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -28,6 +30,27 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.dicon-camera:before {
+  content: '\e91b';
+}
+.dicon-category:before {
+  content: '\e924';
+}
+.dicon-password:before {
+  content: '\e91d';
+}
+.dicon-user-profile:before {
+  content: '\e920';
+}
+.dicon-qrcode:before {
+  content: '\e921';
+}
+.dicon-calendar:before {
+  content: '\e922';
+}
+.dicon-logout:before {
+  content: '\e923';
+}
 .dicon-invest:before {
   content: '\e905';
 }
@@ -73,9 +96,6 @@
 .dicon-transportation:before {
   content: '\e91a';
 }
-.dicon-calendar:before {
-  content: '\e91b';
-}
 .dicon-wages:before {
   content: '\e91e';
 }
@@ -109,7 +129,7 @@
 .dicon-warning-no-fill:before {
   content: '\e90c';
 }
-.dicon-key-outline:before {
+.dicon-key:before {
   content: '\e90e';
 }
 .dicon-fingerprint:before {
@@ -120,4 +140,10 @@
 }
 .dicon-eye-closed:before {
   content: '\e901';
+}
+.dicon-circle-wallet:before {
+  content: "\e925";
+}
+.dicon-home-fill:before {
+  content: url('/assets/icons/home-fill.svg');
 }

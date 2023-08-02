@@ -1,5 +1,5 @@
 <template>
-  <div class="splash-screen h-full w-full absolute p-6">
+  <div class="splash-screen h-screen absolute p-6 top-0 left-0 w-full">
     <div class="max-w-sm mx-auto h-full flex flex-col justify-between">
       <!-- header -->
       <div class="flex flex-row justify-between">
@@ -92,7 +92,7 @@ const nextScreen = () => {
 <style lang="scss" scoped>
 .splash-screen {
   background: linear-gradient(180deg, #ffffff -18.12%, #fffdd6 328.31%);
-  z-index: 1;
+  z-index: 5;
 }
 
 .splash-screen-nav {
