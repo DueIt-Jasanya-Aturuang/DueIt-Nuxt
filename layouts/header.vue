@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="sm:max-w-sm sm:mx-auto w-full">
+    <div class="sm:max-w-sm sm:mx-auto w-full bg-gray-50">
       <!-- body content -->
       <div>
         <slot />
