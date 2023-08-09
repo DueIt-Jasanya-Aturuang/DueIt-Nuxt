@@ -10,9 +10,7 @@
     </div>
     <p class="font-medium">Rp{{ setCurrency(dataCategory.total) }}</p>
     <div class="persentase h-[14px] border border-white rounded-lg relative">
-      <div
-        class="progress h-[14px] border border-white rounded-lg absolute"
-      ></div>
+      <div class="progress border border-white rounded-lg absolute"></div>
     </div>
     <p class="text-[9px] font-bold">
       terpakai {{ setCurrency(dataCategory.terpakai) }}
@@ -54,7 +52,8 @@ const getClassBg = id => {
   border-radius: 20px;
   padding: 14.5px 9px;
   .progress {
-    top: -0.5px;
+    height: 14.25px;
+    top: -1px;
     left: -0.5px;
     width: var(--terpakai);
   }

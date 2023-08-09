@@ -81,6 +81,7 @@ a {
     [class^='dicon-'] {
       color: #c7b407;
     }
+    color: #c7b407;
   }
 }
 </style>

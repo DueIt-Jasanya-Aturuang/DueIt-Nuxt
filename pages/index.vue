@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <v-tour name="tourHomepage" :steps="steps"></v-tour>
+    <v-tour name="tourHomepage" :steps="steps" :options="vTourOptions"></v-tour>
   </div>
 </template>
 
@@ -111,6 +111,15 @@ const skipSplashScreen = () => {
 export default {
   data() {
     return {
+      vTourOptions: {
+        highlight: true,
+        labels: {
+          buttonSkip: 'Lewati',
+          buttonPrevious: 'Kembali',
+          buttonNext: 'Lanjut',
+          buttonStop: 'Selesai',
+        },
+      },
       steps: [
         {
           target: '#stepone',
@@ -126,7 +135,7 @@ export default {
           content: `Fitur ini merupakan catatan keuangan anda yang mana terlihat jumlah anggaran 
             yang dikeluarkan dan sisa anggaran yang telah dipakai.`,
           params: {
-            placement: 'top', // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
+            placement: 'top',
           },
         },
       ],
