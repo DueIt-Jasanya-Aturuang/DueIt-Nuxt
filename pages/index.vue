@@ -1,8 +1,8 @@
 <template>
-  <SplashScreen
+  <!-- <SplashScreen
     v-if="state.showSplashScreen"
     @close-splash="skipSplashScreen"
-  />
+  /> -->
   <div class="relative p-4">
     <!-- header -->
     <div class="header flex justify-between items-center mb-3">
@@ -24,7 +24,7 @@
     <!-- end header -->
 
     <!-- circle chart -->
-    <div class="flex justify-between items-center mb-3">
+    <div id="stepone" class="flex justify-between items-center mb-3">
       <div class="text-left">
         <p class="mb-[10px] text-sm">Rencana Pengeluaran</p>
         <button
@@ -54,7 +54,7 @@
     <!-- end carousel -->
 
     <!-- catatan keuangan -->
-    <div class="mt-5">
+    <div id="stepthree" class="mt-5">
       <div class="flex justify-between items-center mb-4">
         <div class="font-medium">Catatan Keuangan</div>
         <div>
@@ -86,6 +86,8 @@
         </div>
       </div>
     </div>
+
+    <v-tour name="tourHomepage" :steps="steps"></v-tour>
   </div>
 </template>
 
@@ -102,6 +104,37 @@ const state = reactive({
 
 const skipSplashScreen = () => {
   state.showSplashScreen = false
+}
+</script>
+
+<script>
+export default {
+  data() {
+    return {
+      steps: [
+        {
+          target: '#stepone',
+          content: `Fitur ini menampilkan rencana anggaran pengeluaran yang akan anda pakai.`,
+        },
+        {
+          target: '#steptwo',
+          content: `Fitur ini menampilkan detail rencana pengeluaran anda yang sebelumnya
+            sudah anda pikirkan dengan matang.`,
+        },
+        {
+          target: '#stepthree',
+          content: `Fitur ini merupakan catatan keuangan anda yang mana terlihat jumlah anggaran 
+            yang dikeluarkan dan sisa anggaran yang telah dipakai.`,
+          params: {
+            placement: 'top', // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
+          },
+        },
+      ],
+    }
+  },
+  mounted() {
+    this.$tours.tourHomepage.start()
+  },
 }
 </script>
 

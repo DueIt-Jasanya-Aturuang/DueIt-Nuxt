@@ -26,7 +26,7 @@
         <i class="dicon-statistic"></i>
         <span>Laporan</span>
       </NuxtLink>
-      <NuxtLink to="/login" class="menu-nav">
+      <NuxtLink to="/profile" class="menu-nav">
         <i class="dicon-profile"></i>
         <span>Profil</span>
       </NuxtLink>
