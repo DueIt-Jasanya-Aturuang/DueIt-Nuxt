@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-4 relative">
+  <div class="flex flex-col gap-2 relative">
     <HeaderProfile>
       <template #page-title> Profile </template>
       <div class="px-8 py-2">
@@ -15,56 +15,58 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-7">
-        <div class="flex flex-col">
+      <div class="flex flex-col gap-5">
+        <div class="flex flex-col px-3">
           <h3 class="text-[#636161] text-sm">Pengaturan</h3>
-          <div
-            class="flex justify-between items-center border-gray-300 bg-gray-100"
-          >
-            <div
-              class="flex w-[316px] h-[40px] p-2 gap-3 items-center border rounded-md"
-            >
-              <Icon
-                name="teenyicons:password-solid"
-                color="#DCD106"
-                size="20"
-              />
-              <p class="font-[400px]">Akun & Keamanan</p>
+          <div class="border border-gray-300 rounded-2xl shadow-sm bg-white">
+            <div class="flex justify-between items-center">
+              <div
+                class="flex w-[316px] h-[40px] p-2 gap-3 items-center rounded-md"
+              >
+                <Icon
+                  name="teenyicons:password-solid"
+                  color="#DCD106"
+                  size="20"
+                />
+                <p class="font-[400px]">Akun & Keamanan</p>
+              </div>
+              <span
+                ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
+              /></span>
             </div>
-            <span
-              ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
-            /></span>
           </div>
         </div>
         <!-- Mid menu -->
-        <div class="flex flex-col">
+        <div class="flex flex-col px-3">
           <h3 class="text-[#636161] text-sm">Pengingat Dompetmu</h3>
-          <div
-            v-for="menu in midMenu"
-            :key="menu.id"
-            class="flex justify-between items-center bg-gray-100 rounded-md"
-          >
-            <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
-              <Icon :name="menu.icon" color="#DCD106" size="20" />
-              <p class="font-[400px]">{{ menu.title }}</p>
+          <div class="border border-gray-300 bg-white rounded-2xl shadow-sm">
+            <div
+              v-for="menu in midMenu"
+              :key="menu.id"
+              class="flex justify-between items-center"
+            >
+              <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
+                <Icon :name="menu.icon" color="#DCD106" size="20" />
+                <p class="font-[400px]">{{ menu.title }}</p>
+              </div>
+              <span
+                ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
+              /></span>
             </div>
-            <span
-              ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
-            /></span>
           </div>
         </div>
         <!-- Lower menu -->
-        <div class="flex flex-col border-gray-300 bg-gray-100">
-          <div class="flex justify-between">
-            <div
-              class="flex w-[316px] h-[40px] p-2 gap-3 items-center border rounded-md"
-            >
-              <Icon name="ion:log-out" color="#DCD106" size="20" />
-              <p class="font-[400px]">Keluar</p>
+        <div class="flex flex-col px-3">
+          <div class="border border-gray-300 rounded-2xl bg-white shadow-sm">
+            <div class="flex items-center justify-between">
+              <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
+                <Icon name="ion:log-out" color="#DCD106" size="20" />
+                <p class="font-[400px]">Keluar</p>
+              </div>
+              <span
+                ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
+              /></span>
             </div>
-            <span
-              ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
-            /></span>
           </div>
         </div>
       </div>
