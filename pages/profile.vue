@@ -1,7 +1,9 @@
 <template>
   <div class="flex flex-col gap-2 relative">
     <HeaderProfile>
-      <template #page-title> Profile </template>
+      <template #page-title>
+        <span class="block text-center"> Profile </span>
+      </template>
       <div class="px-8 py-2">
         <div
           class="flex flex-col justify-center bg-gradient-to-r from-[rgba(255,250,107,1.00)] to-[rgba(255,250,107,0.53)] h-[100px] border rounded-2xl drop-shadow-[0_2px_2px_0px_#00000026] px-5"
@@ -28,7 +30,7 @@
                   color="#DCD106"
                   size="20"
                 />
-                <p class="font-[400px]">Akun & Keamanan</p>
+                <p class="font-semibold">Akun & Keamanan</p>
               </div>
               <span
                 ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
@@ -47,7 +49,7 @@
             >
               <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
                 <Icon :name="menu.icon" color="#DCD106" size="20" />
-                <p class="font-[400px]">{{ menu.title }}</p>
+                <p class="font-semibold">{{ menu.title }}</p>
               </div>
               <span
                 ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
@@ -61,7 +63,7 @@
             <div class="flex items-center justify-between">
               <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
                 <Icon name="ion:log-out" color="#DCD106" size="20" />
-                <p class="font-[400px]">Keluar</p>
+                <p class="font-semibold">Keluar</p>
               </div>
               <span
                 ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
