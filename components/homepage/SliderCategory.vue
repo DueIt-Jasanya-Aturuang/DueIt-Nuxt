@@ -1,5 +1,6 @@
 <template>
   <Swiper
+    id="steptwo"
     :slides-per-view="'auto'"
     :free-mode="true"
     :space-between="5"

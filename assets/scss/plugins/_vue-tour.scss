@@ -1,0 +1,37 @@
+.v-tour__target--highlighted {
+	box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+}
+
+:deep(.v-step) {
+	background-color: white !important;
+	color: black !important;
+	border-radius: 20px !important;
+	padding: 20px;
+	text-align: left;
+	z-index: 10000;
+
+	.v-step__buttons {
+		text-align: right;
+	}
+
+	.v-step__button {
+		font-size: 1rem;
+		height: auto;
+
+		&.v-step__button-next,
+		&.v-step__button-stop {
+			background: linear-gradient(0deg, #91B920 -159%, #EBE11A 100%) !important;
+			border-radius: 8px;
+			padding: 10px 12px;
+		}
+
+		&.v-step__button-previous {
+			display: none;
+		}
+
+		&.v-step__button-skip {
+			color: #B6AE03;
+		}
+	}
+}

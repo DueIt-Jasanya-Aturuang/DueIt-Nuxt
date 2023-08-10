@@ -26,7 +26,7 @@
         <i class="dicon-statistic"></i>
         <span>Laporan</span>
       </NuxtLink>
-      <NuxtLink to="/login" class="menu-nav">
+      <NuxtLink to="/profile" class="menu-nav">
         <i class="dicon-profile"></i>
         <span>Profil</span>
       </NuxtLink>
@@ -81,6 +81,7 @@ a {
     [class^='dicon-'] {
       color: #c7b407;
     }
+    color: #c7b407;
   }
 }
 </style>
