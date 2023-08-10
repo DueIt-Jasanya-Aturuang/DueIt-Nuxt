@@ -1,12 +1,11 @@
 <template>
-  <div class="bg-[#FFFD00] h-[100px] p-[10px] flex gap-[110px] items-center">
+  <div class="bg-[#FFFD00] h-[100px] p-[10px] flex items-center">
     <NuxtLink to="/">
       <img src="~assets/icons/back-arrow.svg" width="40" />
     </NuxtLink>
-
-    <slot name="title">
-      <h3 class="font-bold text-lg mb-1">Profile</h3>
-    </slot>
+    <h2 class="text-lg font-semibold flex-grow self-center">
+      <slot name="page-title"> Profile </slot>
+    </h2>
   </div>
 
   <div>
