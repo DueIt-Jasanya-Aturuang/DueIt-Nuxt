@@ -4,8 +4,11 @@
     @close-splash="skipSplashScreen"
   /> -->
   <div class="relative p-4">
-    <!-- header -->
-    <div class="header flex justify-between items-center mb-3">
+    <!-- header public -->
+    <div
+      v-if="!state.isLoggedIn"
+      class="header flex justify-between items-center mb-3"
+    >
       <div class="flex gap-[10px] items-center">
         <div
           class="w-[50px] h-[50px] bg-[#F0F0F0] rounded-full flex justify-center items-center text-xl"
@@ -20,6 +23,25 @@
       <div class="notif">
         <i class="dicon-notif-no-fill text-2xl"></i>
       </div>
+    </div>
+    <!-- end header public -->
+
+    <!-- header logged in -->
+    <div
+      v-if="state.isLoggedIn"
+      class="header flex justify-between items-center mb-3"
+    >
+      <div class="flex gap-[10px] items-center">
+        <img src="~assets/img/avatar.png" class="avatar" alt="avatar" />
+        <div>
+          <p>Hello, <b>Oktaviani</b></p>
+          <p class="text-xs">Kelola keuanganmu atau ia akan meninggalkanmu!</p>
+        </div>
+      </div>
+      <NuxtLink to="/notification" class="notif relative">
+        <i class="dicon-notif-no-fill text-[25px]"></i>
+        <div class="notif-amount flex justify-center items-center">99</div>
+      </NuxtLink>
     </div>
     <!-- end header -->
 
@@ -100,6 +122,7 @@ import SplashScreen from '~/components/SplashScreen.vue'
 const state = reactive({
   showSplashScreen: true,
   showSaldo: true,
+  isLoggedIn: true,
 })
 
 const skipSplashScreen = () => {
@@ -157,5 +180,24 @@ export default {
   box-shadow: 0px 1px 3px 0px #00000026;
   padding: 12px;
   border-radius: 16px;
+}
+
+img.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.notif-amount {
+  background-color: #dc4c55;
+  border-radius: 50%;
+  color: #fff;
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  height: 12px;
+  width: 12px;
+  font-size: 8px;
 }
 </style>
