@@ -21,21 +21,23 @@
         <div class="flex flex-col px-3">
           <h3 class="text-[#636161] text-sm">Pengaturan</h3>
           <div class="border border-gray-300 rounded-2xl shadow-sm bg-white">
-            <div class="flex justify-between items-center">
-              <div
-                class="flex w-[316px] h-[40px] p-2 gap-3 items-center rounded-md"
-              >
-                <Icon
-                  name="teenyicons:password-solid"
-                  color="#DCD106"
-                  size="20"
-                />
-                <p class="font-semibold">Akun & Keamanan</p>
+            <NuxtLink to="/profile/akun-dan-keamanan">
+              <div class="flex justify-between items-center">
+                <div
+                  class="flex w-[316px] h-[40px] p-2 gap-3 items-center rounded-md"
+                >
+                  <Icon
+                    name="teenyicons:password-solid"
+                    color="#DCD106"
+                    size="20"
+                  />
+                  <p class="font-semibold">Akun & Keamanan</p>
+                </div>
+                <span
+                  ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
+                /></span>
               </div>
-              <span
-                ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
-              /></span>
-            </div>
+            </NuxtLink>
           </div>
         </div>
         <!-- Mid menu -->

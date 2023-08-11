@@ -3,7 +3,7 @@
     <div class="bg-white-bottom"></div>
     <div class="sm:max-w-sm sm:mx-auto w-full">
       <!-- body content -->
-      <div>
+      <div class="mb-[59px]">
         <slot />
       </div>
       <!-- menu nav (mobile) -->
