@@ -1,6 +1,6 @@
 <template>
   <div class="aspect-square h-full w-full">
-    <div class="bg-circle relative" :style="`--num: 40`">
+    <div class="bg-circle relative" style="--num: 40">
       <svg>
         <circle cx="50%" cy="50%" r="70" class="track"></circle>
         <circle cx="50%" cy="50%" r="70" class="progress"></circle>
