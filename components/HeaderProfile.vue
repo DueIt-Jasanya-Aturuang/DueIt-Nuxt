@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#FFFD00] h-[100px] p-[10px] flex items-center">
+  <div class="bg-[#FFFD00] h-[80px] p-[10px] flex items-center">
     <div @click="$router.back()">
       <img src="~assets/icons/back-arrow.svg" width="32" />
     </div>
