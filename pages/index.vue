@@ -3,7 +3,10 @@
     v-if="state.showSplashScreen"
     @close-splash="skipSplashScreen"
   /> -->
-  <div class="relative p-4">
+
+  <LoadingSkeleton v-if="state.loading" />
+
+  <div v-else class="relative p-4">
     <!-- header public -->
     <div
       v-if="!state.isLoggedIn"
@@ -123,6 +126,13 @@ const state = reactive({
   showSplashScreen: true,
   showSaldo: true,
   isLoggedIn: true,
+  loading: true,
+})
+
+onMounted(() => {
+  setTimeout(() => {
+    state.loading = false
+  }, 1500)
 })
 
 const skipSplashScreen = () => {
@@ -165,7 +175,9 @@ export default {
     }
   },
   mounted() {
-    this.$tours.tourHomepage.start()
+    setTimeout(() => {
+      this.$tours.tourHomepage.start()
+    }, 2000)
   },
 }
 </script>
