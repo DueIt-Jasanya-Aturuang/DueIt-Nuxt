@@ -1,0 +1,24 @@
+name: dueit nuxt deploy
+on:
+  pull_request:
+    branches:
+      - rama/DEPLOY/setup-docker
+  push:
+    branches:
+      - rama/DEPLOY/setup-docker
+
+jobs:
+  nuxt-deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy to vps
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          port: ${{ secrets.SERVER_PORT }}
+          key: ${{ secrets.SERVER_SSHKEY }}
+          script: ${{ secrets.SERVER_SCRIPT }}
+
