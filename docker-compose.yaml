@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  dueit-nuxt:
+    build: .
+    container_name: dueit_fe_container
+    restart: always
+    ports:
+      - "3000:3000"
