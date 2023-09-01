@@ -2,14 +2,12 @@ FROM node:16-alpine3.17 as build
 
 # update and install the latest dependencies
 # Add non root user to the docker image and set the user
-RUN apk update && apk upgrade && adduser -D nuxtuser
-
-USER nuxtuser
+RUN apk update && apk upgrade
 
 # set work dir as app
 WORKDIR /app
 # copy the nuxt project content with proper permission for the user nuxtuser
-COPY --chown=nuxtuser:nuxtuser . /app
+COPY . /app
 # COPY . ./
 # install all the project npm dependencies
 # build the nuxt project to generate the artifacts in .output directory
@@ -19,15 +17,13 @@ RUN npm install && npx nuxt build
 FROM node:16-alpine3.17
 # update and install latest dependencies, add dumb-init package
 # add a non root user
-RUN apk update && apk upgrade && apk add dumb-init && adduser -D nuxtuser
-# set non root user
-USER nuxtuser
+RUN apk update && apk upgrade && apk add dumb-init
 
 # set work dir as app
 WORKDIR /app
 # copy the output directory to the /app directory from
 # build stage with proper permissions for user nuxt user
-COPY --chown=nuxtuser:nuxtuser --from=build /app/.output ./
+COPY --from=build /app/.output ./
 # expose 8080 on container
 EXPOSE 3000
 
