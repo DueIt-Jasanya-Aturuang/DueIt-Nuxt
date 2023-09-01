@@ -13,7 +13,7 @@
     </div>
     <div class="flex justify-center">
       <img
-        src="../../assets//ilustration/undraw_mail_sent_re_0ofv 1.svg"
+        src="./../../assets/ilustration/undraw_mail_sent_re_0ofv1.svg"
         alt="logo mail"
         width="150"
       />
