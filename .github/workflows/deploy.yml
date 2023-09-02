@@ -22,10 +22,13 @@ jobs:
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
-      - name: build docker image and push
+      - name: build docker image
         if: ${{ github.ref == 'refs/heads/rama/DEPLOY/setup-docker' }}
         run: |
-          docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:dev |
+          docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:dev
+
+      - name: push image
+        run: |
           docker push $DOCKER_USER/$REPO_NAME:dev
 
       - name: deploy to vps
