@@ -2,10 +2,10 @@ name: dueit nuxt deploy
 on:
   pull_request:
     branches:
-      - rama/DEPLOY/setup-docker
+      - dev
   push:
     branches:
-      - rama/DEPLOY/setup-docker
+      - dev
 
 env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
@@ -23,7 +23,7 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
       - name: build docker image
-        if: ${{ github.ref == 'refs/heads/rama/DEPLOY/setup-docker' }}
+#        if: ${{ github.ref == 'refs/heads/dev' }}
         run: |
           docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:dev
 
