@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   dueit-nuxt:
-    build: .
+    image:  jasanya4tech/dueit-nuxt:dev
     container_name: dueit_fe_container
     restart: always
     ports:
