@@ -44,19 +44,21 @@
         <div class="flex flex-col px-3">
           <h3 class="text-[#636161] text-sm">Pengingat Dompetmu</h3>
           <div class="border border-gray-300 bg-white rounded-2xl shadow-sm">
-            <div
+            <NuxtLink
               v-for="menu in midMenu"
               :key="menu.id"
-              class="flex justify-between items-center"
+              :to="menu.urlPage ? `/profile${menu.urlPage}` : ''"
             >
-              <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
-                <Icon :name="menu.icon" color="#DCD106" size="20" />
-                <p class="font-semibold">{{ menu.title }}</p>
+              <div class="flex justify-between items-center">
+                <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
+                  <Icon :name="menu.icon" color="#DCD106" size="20" />
+                  <p class="font-semibold">{{ menu.title }}</p>
+                </div>
+                <span
+                  ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
+                /></span>
               </div>
-              <span
-                ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
-              /></span>
-            </div>
+            </NuxtLink>
           </div>
         </div>
         <!-- Lower menu -->
@@ -94,6 +96,7 @@ const midMenu = [
     id: 2,
     title: 'Pengaturan kategori',
     icon: 'iconamoon:category-fill',
+    urlPage: '/kategori',
   },
   {
     id: 3,
@@ -104,6 +107,7 @@ const midMenu = [
     id: 4,
     title: 'Ubah metode pembayaran',
     icon: 'solar:wallet-bold',
+    urlPage: '/metode-pembayaran',
   },
 ]
 </script>
