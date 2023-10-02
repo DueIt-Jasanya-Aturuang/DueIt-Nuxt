@@ -1,3 +1,5 @@
+<!-- eslint-disable no-console -->
+<!-- eslint-disable require-await -->
 <template>
   <div
     class="container relative max-w-sm mx-auto flex place-items-center h-screen"
@@ -5,17 +7,17 @@
     <AuthForm>
       <template #page-title>Masuk Akun</template>
       <template #form-input>
-        <form action="/auth/otp">
+        <form @submit.prevent="login">
           <UFormGroup label="Email / Username" class="mb-6">
             <UInput
-              v-model="username"
+              v-model="loginData.email_or_username"
               placeholder="Masukkan email atau username"
               size="md"
             />
           </UFormGroup>
           <UFormGroup label="Kata Sandi">
             <UInput
-              v-model="password"
+              v-model="loginData.password"
               :type="state.showPassword ? 'text' : 'password'"
               placeholder="Masukkan kata sandi akun"
               size="md"
@@ -49,6 +51,8 @@
 
 <script setup>
 import { reactive } from 'vue'
+import axios from 'axios'
+// const axios = useNuxtApp().$axiosInstance
 
 definePageMeta({
   // set ke layout custom / tanpa footer
@@ -56,8 +60,35 @@ definePageMeta({
 })
 
 // v-model untuk menampung data form
-const username = ref('')
-const password = ref('')
+const loginData = reactive({
+  email_or_username: 'bregsiaju@gmail.com',
+  password: '12345678',
+})
+
+// const login = async () => {
+//   const { data } = await useFetch('https://dueit.my.id/api/auth/login', {
+//     method: 'post',
+//     headers: {
+//       'App-ID': '5410801c-faaf-4776-95be-56472e044820',
+//       'X-Key': 'key',
+//     },
+//     body: loginData,
+//   })
+//   console.log(data)
+// }
+
+const login = async () => {
+  try {
+    await axios.post('https://dueit.my.id/api/auth/login', loginData, {
+      headers: {
+        'App-ID': '5410801c-faaf-4776-95be-56472e044820',
+        'X-Key': 'key',
+      },
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 // state untuk menampilkan password
 const state = reactive({

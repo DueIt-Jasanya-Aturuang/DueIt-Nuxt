@@ -9,24 +9,24 @@
         </div>
       </template>
       <template #form-input>
-        <form action="">
+        <form @submit.prevent="onRegister">
           <UFormGroup label="Nama Lengkap" class="mb-6">
             <UInput
-              v-model="fullname"
+              v-model="registData.full_name"
               placeholder="Masukkan nama lengkap"
               size="md"
             />
           </UFormGroup>
           <UFormGroup label="Username" class="mb-6">
             <UInput
-              v-model="username"
+              v-model="registData.username"
               placeholder="Masukkan username"
               size="md"
             />
           </UFormGroup>
           <UFormGroup label="Email" class="mb-6">
             <UInput
-              v-model="email"
+              v-model="registData.email"
               type="email"
               placeholder="Masukkan email"
               size="md"
@@ -34,7 +34,7 @@
           </UFormGroup>
           <UFormGroup label="Kata Sandi" class="mb-6">
             <UInput
-              v-model="password"
+              v-model="registData.password"
               :type="state.showPassword ? 'text' : 'password'"
               placeholder="Masukkan kata sandi"
               size="md"
@@ -56,7 +56,7 @@
           </UFormGroup>
           <UFormGroup label="Konfirmasi Kata Sandi">
             <UInput
-              v-model="confirmPass"
+              v-model="registData.re_password"
               :type="state.showConfirmPass ? 'text' : 'password'"
               placeholder="Masukkan ulang kata sandi"
               size="md"
@@ -87,6 +87,7 @@
 
 <script setup>
 import { reactive } from 'vue'
+const axios = useNuxtApp().$axiosInstance
 
 definePageMeta({
   // set ke layout custom / tanpa footer
@@ -94,24 +95,26 @@ definePageMeta({
 })
 
 // v-model untuk menampung data form
-const fullname = ref('')
-const username = ref('')
-const email = ref('')
-const password = ref('')
-const confirmPass = ref('')
+const registData = reactive({
+  full_name: '',
+  username: '',
+  email: '',
+  password: '',
+  re_password: '',
+})
+
+const onRegister = async () => {
+  try {
+    await axios.post('/auth/register', registData)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const state = reactive({
   showPassword: false,
   showConfirmPass: false,
 })
-
-// const axios = useNuxtApp().$axios
-
-// onMounted(() => {
-//   axios.get('/api/hello').then((response) => {
-//     console.log('response:', response)
-//   })
-// })
 </script>
 
 <style lang="scss" scoped>

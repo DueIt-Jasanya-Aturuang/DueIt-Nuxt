@@ -26,7 +26,9 @@
     "sass-loader": "^13.3.1"
   },
   "dependencies": {
+    "@nuxt-alt/proxy": "^2.3.2",
     "axios": "^1.4.0",
+    "nuxt-proxy": "^0.4.1",
     "nuxt-swiper": "^1.2.0",
     "vue3-tour": "^0.3.4"
   }

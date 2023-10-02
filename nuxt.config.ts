@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -10,13 +11,89 @@ export default defineNuxtConfig({
     },
   },
 
+  runtimeConfig: {
+    BASE_URL: process.env.BASE_URL,
+    APP_ID: process.env.APP_ID,
+    KEY: process.env.KEY,
+    // proxy: {
+    //   options: {
+    //     target: 'https://dueit.my.id',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/api': '/api',
+    //     },
+    //     pathFilter: ['/api'],
+    //   },
+    // },
+  },
+
   modules: [
     '@nuxthq/ui',
     '@nuxtjs/eslint-module',
     // dapat menggunakan semua icon di https://icones.js.org/
     'nuxt-icon',
     'nuxt-swiper',
+    // '@nuxt-alt/proxy',
+    // 'nuxt-proxy',
   ],
+
+  routeRules: {
+    '/api/**': {
+      proxy: {
+        to: 'https://dueit.my.id/api/**',
+      },
+    },
+  },
+
+  // nitro: {
+  //   devProxy: {
+  //     '/api': {
+  //       target: 'https://dueit.my.id',
+  //       headers: {
+  //         'Access-Control-Allow-Origin': '*',
+  //         'Access-Control-Allow-Headers': '*',
+  //       },
+  //       prependPath: true,
+  //       changeOrigin: true,
+  //     },
+  //   },
+  // },
+
+  // proxy: {
+  //   options: {
+  //     target: 'https://dueit.my.id',
+  //     changeOrigin: true,
+  //     pathRewrite: {
+  //       '^/api': '/api',
+  //     },
+  //     pathFilter: ['/api'],
+  //   },
+  // },
+
+  // proxy: {
+  //   proxies: {
+  //     '/api': {
+  //       target: process.env.API_URL,
+  //       rewrite: path => path.replace(/^\/api/, ''),
+  //       changeOrigin: true,
+  //       configure: (proxy, options) => {
+  //         options.headers = {
+  //           accept: 'application/json',
+  //         }
+  //       },
+  //     },
+  //   },
+  // },
+
+  // proxy: {
+  //   proxies: {
+  //     '/api': {
+  //       target: 'https://dueit.my.id/api',
+  //       changeOrigin: true,
+  //       rewrite: path => path.replace(/^\/api/, ''),
+  //     },
+  //   },
+  // },
 
   eslint: {
     lintOnStart: false,
@@ -29,9 +106,6 @@ export default defineNuxtConfig({
     preference: 'light',
   },
 
-  // main file scss
-  // css: ['~/assets/scss/main.scss'],
-
   vite: {
     css: {
       preprocessorOptions: {
@@ -40,5 +114,13 @@ export default defineNuxtConfig({
         },
       },
     },
+    // server: {
+    //   proxy: {
+    //     '/api': {
+    //       target: 'https://dueit.my.id',
+    //       changeOrigin: true,
+    //     },
+    //   },
+    // },
   },
 })
