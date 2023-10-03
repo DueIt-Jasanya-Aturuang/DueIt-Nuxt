@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2 relative">
+  <main class="flex flex-col gap-2 relative">
     <HeaderProfile>
       <template #page-title>
         <span class="block text-center"> Profile </span>
@@ -44,21 +44,90 @@
         <div class="flex flex-col px-3">
           <h3 class="text-[#636161] text-sm">Pengingat Dompetmu</h3>
           <div class="border border-gray-300 bg-white rounded-2xl shadow-sm">
-            <div
-              v-for="menu in midMenu"
-              :key="menu.id"
-              class="flex justify-between items-center"
-            >
+            <div class="flex justify-between items-center">
               <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
-                <Icon :name="menu.icon" color="#DCD106" size="20" />
-                <p class="font-semibold">{{ menu.title }}</p>
+                <Icon name="uis:calender" color="#DCD106" size="20" />
+                <p class="font-semibold">Pengatur harian</p>
               </div>
-              <span
-                ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
-              /></span>
+              <div>
+                <button class="cursor-pointer" @click="showModal">
+                  <Icon
+                    name="iconamoon:arrow-right-2"
+                    color="black"
+                    size="24"
+                  />
+                </button>
+
+                <UModal v-model="modalReminder" :ui="{ width: 'w-[400px]' }">
+                  <DaySetPopUp />
+                </UModal>
+              </div>
+              <!-- <button class="cursor-pointer" @click="showModal">
+                <Icon name="iconamoon:arrow-right-2" color="black" size="24" />
+              </button>
+              <div
+                v-show="modalReminder"
+                class="absolute bg-white w-full left-0"
+              >
+                <DaySetPopUp />
+              </div> -->
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
+                <Icon
+                  name="iconamoon:category-fill"
+                  color="#DCD106"
+                  size="20"
+                />
+                <p class="font-semibold">Pengaturan kategori</p>
+              </div>
+              <NuxtLink to="/profile/kategori">
+                <span
+                  ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
+                /></span>
+              </NuxtLink>
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
+                <Icon
+                  name="mdi:clipboard-text-history"
+                  color="#DCD106"
+                  size="20"
+                />
+                <p class="font-semibold">Pengaturan periode</p>
+              </div>
+              <div>
+                <button class="cursor-pointer" @click="showModalPeriod">
+                  <Icon
+                    name="iconamoon:arrow-right-2"
+                    color="black"
+                    size="24"
+                  />
+                </button>
+
+                <UModal v-model="modalPeriod" :ui="{ width: 'w-[400px]' }">
+                  <PeriodSetPopUp />
+                </UModal>
+              </div>
+
+              <!-- <div v-show="modalPeriod" class="absolute bg-white w-full left-0">
+                <PeriodSetPopUp />
+              </div> -->
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
+                <Icon name="solar:wallet-bold" color="#DCD106" size="20" />
+                <p class="font-semibold">Ubah metode pembayaran</p>
+              </div>
+              <NuxtLink to="/profile/metode-pembayaran">
+                <span
+                  ><Icon name="iconamoon:arrow-right-2" color="black" size="24"
+                /></span>
+              </NuxtLink>
             </div>
           </div>
         </div>
+
         <!-- Lower menu -->
         <div class="flex flex-col px-3">
           <div class="border border-gray-300 rounded-2xl bg-white shadow-sm">
@@ -76,34 +145,59 @@
       </div>
       <!-- Upper menu -->
     </HeaderProfile>
-  </div>
+  </main>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 definePageMeta({
   // set ke layout custom / tanpa footer
   layout: 'header',
 })
+
+const modalReminder = ref(false)
+const modalPeriod = ref(false)
+
+const showModal = () => {
+  modalReminder.value = true
+}
+
+const hideModal = () => {
+  modalReminder.value = false
+}
+
+const showModalPeriod = () => {
+  modalPeriod.value = true
+}
+
+const hideModalPeriod = () => {
+  modalPeriod.value = false
+}
+
 const midMenu = [
   {
     id: 1,
     title: 'Pengatur harian',
     icon: 'uis:calender',
+    link: '/profile/kategori',
   },
   {
     id: 2,
     title: 'Pengaturan kategori',
     icon: 'iconamoon:category-fill',
+    link: '/profile/kategori',
   },
   {
     id: 3,
     title: 'Pengaturan periode',
     icon: 'mdi:clipboard-text-history',
+    link: '/profile/kategori',
   },
   {
     id: 4,
     title: 'Ubah metode pembayaran',
     icon: 'solar:wallet-bold',
+    link: '/profile/kategori',
   },
 ]
 </script>
