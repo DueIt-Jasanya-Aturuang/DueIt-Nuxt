@@ -45,19 +45,19 @@ export default defineNuxtConfig({
     },
   },
 
-  // nitro: {
-  //   devProxy: {
-  //     '/api': {
-  //       target: 'https://dueit.my.id',
-  //       headers: {
-  //         'Access-Control-Allow-Origin': '*',
-  //         'Access-Control-Allow-Headers': '*',
-  //       },
-  //       prependPath: true,
-  //       changeOrigin: true,
-  //     },
-  //   },
-  // },
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'https://dueit.my.id',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*',
+        },
+        prependPath: true,
+        changeOrigin: true,
+      },
+    },
+  },
 
   // proxy: {
   //   options: {

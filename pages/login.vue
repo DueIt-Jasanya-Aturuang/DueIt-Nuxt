@@ -42,7 +42,9 @@
               >Lupa Password?</NuxtLink
             >
           </div>
-          <ButtonsCommon class="w-full mt-[34px]">Login</ButtonsCommon>
+          <ButtonsCommon class="w-full mt-[34px] bg-[#B6AE03]"
+            >Login</ButtonsCommon
+          >
         </form>
       </template>
     </AuthForm>
@@ -50,7 +52,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import axios from 'axios'
 // const axios = useNuxtApp().$axiosInstance
 
@@ -63,6 +65,7 @@ definePageMeta({
 const loginData = reactive({
   email_or_username: 'bregsiaju@gmail.com',
   password: '12345678',
+  remember_me: false,
 })
 
 // const login = async () => {
@@ -77,16 +80,39 @@ const loginData = reactive({
 //   console.log(data)
 // }
 
+// const login = async () => {
+//   try {
+//     await axios.post('https://dueit.my.id/api/auth/login', loginData, {
+//       headers: {
+//         'App-ID': '5410801c-faaf-4776-95be-56472e044820',
+//         'X-Key': 'key',
+//       },
+//     })
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
 const login = async () => {
   try {
-    await axios.post('https://dueit.my.id/api/auth/login', loginData, {
+    const payload = JSON.stringify(loginData)
+    const config = {
       headers: {
         'App-ID': '5410801c-faaf-4776-95be-56472e044820',
-        'X-Key': 'key',
+        'X-Key': 'secretkeyjasanyaauth',
       },
-    })
-  } catch (error) {
-    console.log(error)
+    }
+    const url = 'https://dueit.my.id/api/auth/login'
+    const response = await axios.post(url, payload, config)
+    const data = response.data
+    if (data) {
+      console.log(payload)
+    } else {
+      alert(data)
+      console.log(payload)
+    }
+  } catch (err) {
+    alert(err)
   }
 }
 
