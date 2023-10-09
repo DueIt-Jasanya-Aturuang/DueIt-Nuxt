@@ -10,21 +10,21 @@
         <form @submit.prevent="login">
           <UFormGroup label="Email / Username" class="mb-6">
             <UInput
-              v-model="loginData.email_or_username"
+              v-model="name"
               placeholder="Masukkan email atau username"
               size="md"
             />
           </UFormGroup>
           <UFormGroup label="Kata Sandi">
             <UInput
-              v-model="loginData.password"
-              :type="state.showPassword ? 'text' : 'password'"
-              placeholder="Masukkan kata sandi akun"
+              v-model="image"
+              type="file"
+              placeholder="Pilih Gambar"
               size="md"
               class="relative"
             >
               <!-- set icon password tampil/tidak -->
-              <div
+              <!-- <div
                 class="absolute right-0 top-0 cursor-pointer"
                 @click="state.showPassword = !state.showPassword"
               >
@@ -34,7 +34,7 @@
                   "
                   class="py-2 px-3"
                 ></i>
-              </div>
+              </div> -->
             </UInput>
           </UFormGroup>
           <div class="w-full flex justify-end mt-4">
@@ -62,16 +62,18 @@ definePageMeta({
 })
 
 // v-model untuk menampung data form
-const loginData = reactive({
-  email_or_username: 'bregsiaju@gmail.com',
-  password: '12345678',
-  remember_me: false,
-})
+// const loginData = reactive({
+//   email_or_username: 'bregsiaju@gmail.com',
+//   password: '12345678',
+//   remember_me: false,
+// })
+
+const name = ref('')
+const image = ref('')
 
 // const loginData = reactive({
-//   email_or_username: 'ibanrama29@gmail.com',
-//   password: '123456789',
-//   remember_me: false,
+//   name: '',
+//   image: '',
 // })
 
 // const login = async () => {
@@ -86,48 +88,48 @@ const loginData = reactive({
 //   console.log(data)
 // }
 
-const login = async () => {
-  try {
-    await axios.post('https://auth.jasanya.tech', loginData, {
-      headers: {
-        'App-ID': '5410801c-faaf-4776-95be-56472e044820',
-        'X-Key': 'secretkeyjasanyaauth',
-        'X-Api-Key': 'apikeyauth',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*',
-      },
-    })
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 // const login = async () => {
 //   try {
-//     const payload = { loginData }
-//     const config = {
+//     await axios.post('https://dueit.my.id/api', loginData, {
 //       headers: {
-//         'Content-Type': 'application/json',
+//         'User-Id': 'a8d88984-e5f5-4e61-8c5f-9ffbf0872786',
 //         'App-ID': '5410801c-faaf-4776-95be-56472e044820',
+//         Authorization:
+//           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTY4NTgyODUsInN1YiI6ImE4ZDg4OTg0LWU1ZjUtNGU2MS04YzVmLTlmZmJmMDg3Mjc4NiJ9.9fBotlFvIoJHMWucvR2eYCI98KmWwYRdoThvifYuB0A',
 //         'X-Key': 'secretkeyjasanyaauth',
-//         'X-Api-Key': 'apikeyauth',
-//         'Access-Control-Allow-Origin': '*',
-//         'Access-Control-Allow-Headers': '*',
 //       },
-//     }
-//     const url = 'https://auth.jasanya.tech'
-//     const response = await axios.post(url, payload, config)
-//     const data = response.data
-//     if (data) {
-//       console.log(payload)
-//     } else {
-//       alert(data)
-//       console.log(payload)
-//     }
-//   } catch (err) {
-//     alert(err)
+//     })
+//   } catch (error) {
+//     console.log(error)
 //   }
 // }
+
+const login = async () => {
+  try {
+    const payload = { name: name.value, image: image.value }
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-dat',
+        'User-Id': 'a8d88984-e5f5-4e61-8c5f-9ffbf0872786',
+        'App-ID': '5410801c-faaf-4776-95be-56472e044820',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTY4NTgyODUsInN1YiI6ImE4ZDg4OTg0LWU1ZjUtNGU2MS04YzVmLTlmZmJmMDg3Mjc4NiJ9.9fBotlFvIoJHMWucvR2eYCI98KmWwYRdoThvifYuB0A',
+        'X-Key': 'secretkeyjasanyaauth',
+      },
+    }
+    const url = 'https://dueit.my.id/api/finance/payment'
+    const response = await axios.post(url, payload, config)
+    const data = response.data
+    if (data) {
+      console.log(data)
+    } else {
+      alert(data)
+      console.log(data)
+    }
+  } catch (err) {
+    alert(err)
+  }
+}
 
 // state untuk menampilkan password
 const state = reactive({
