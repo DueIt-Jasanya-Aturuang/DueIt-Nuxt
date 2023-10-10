@@ -63,8 +63,8 @@ definePageMeta({
 
 // v-model untuk menampung data form
 const loginData = reactive({
-  email_or_username: 'bregsiaju@gmail.com',
-  password: '12345678',
+  email_or_username: 'ibanrama29@gmail.com',
+  password: 'ibanrama',
   remember_me: false,
 })
 
@@ -88,19 +88,19 @@ const loginData = reactive({
 
 const login = async () => {
   try {
-    await axios.post('https://auth.jasanya.tech', loginData, {
+    await axios.post('https://dueit.my.id/api/auth/login', loginData, {
       headers: {
         'App-ID': '5410801c-faaf-4776-95be-56472e044820',
+        // 'User-ID': '5410801c-faaf-4776-95be-56472e044820',
         'X-Key': 'secretkeyjasanyaauth',
-        'X-Api-Key': 'apikeyauth',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*',
+        // 'Content-Type': 'application/jso3n',
       },
     })
   } catch (error) {
     console.log(error)
   }
 }
+
 
 // const login = async () => {
 //   try {
