@@ -112,28 +112,49 @@
       </div>
     </div>
 
-    <v-tour name="tourHomepage" :steps="steps" :options="vTourOptions"></v-tour>
+    <v-tour
+      name="tourHomepage"
+      :steps="steps"
+      :options="vTourOptions"
+      :callbacks="vTourCallback"
+    ></v-tour>
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import CircleChart from '~/components/homepage/CircleChart.vue'
 import SplashScreen from '~/components/SplashScreen.vue'
 
-// state untuk menampilkan password
 const state = reactive({
   showSplashScreen: true,
   showSaldo: true,
   isLoggedIn: true,
-  loading: true,
+  loading: false,
 })
 
-onMounted(() => {
-  setTimeout(() => {
-    state.loading = false
-  }, 1500)
+const isFirstVisit = useCookie('is-first-visit')
+
+const setFirstVisit = () => {
+  // console.log('stoppp')
+  isFirstVisit.value = false
+  // console.log(isFirstVisit)
+}
+const checkFirstVisit = computed(() => {
+  // console.log(localStorage.getItem('first-visit'))
+  // console.log(isFirstVisit)
+  return isFirstVisit.value || null
 })
+
+const vTourCallback = reactive({
+  onStop: setFirstVisit,
+})
+
+// onMounted(() => {
+//   setTimeout(() => {
+//     state.loading = false
+//   }, 1500)
+// })
 
 const skipSplashScreen = () => {
   state.showSplashScreen = false
@@ -176,8 +197,18 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.$tours.tourHomepage.start()
+      this.startTour()
     }, 2000)
+  },
+  methods: {
+    startTour() {
+      const cookiee = useCookie('is-first-visit') || undefined
+      if (cookiee.value !== false) {
+        this.$tours.tourHomepage.start()
+      } else {
+        this.$tours.tourHomepage.stop()
+      }
+    },
   },
 }
 </script>

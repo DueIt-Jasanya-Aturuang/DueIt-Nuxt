@@ -53,8 +53,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import axios from 'axios'
-// const axios = useNuxtApp().$axiosInstance
+const axios = useNuxtApp().$axiosInstance
 
 definePageMeta({
   // set ke layout custom / tanpa footer
@@ -63,77 +62,23 @@ definePageMeta({
 
 // v-model untuk menampung data form
 const loginData = reactive({
-  email_or_username: 'ibanrama29@gmail.com',
-  password: 'ibanrama',
+  email_or_username: 'bregsiaju@gmail.com',
+  password: '12345678',
   remember_me: false,
 })
 
 const token = ref('')
 
-// const loginData = reactive({
-//   email_or_username: 'ibanrama29@gmail.com',
-//   password: '123456789',
-//   remember_me: false,
-// })
-
-// const login = async () => {
-//   const { data } = await useFetch('https://dueit.my.id/api/auth/login', {
-//     method: 'post',
-//     headers: {
-//       'App-ID': '5410801c-faaf-4776-95be-56472e044820',
-//       'X-Key': 'key',
-//     },
-//     body: loginData,
-//   })
-//   console.log(data)
-// }
-
 const login = async () => {
   try {
-    const response = await axios.post(
-      'https://dueit.my.id/api/auth/login',
-      loginData,
-      {
-        headers: {
-          'App-ID': '5410801c-faaf-4776-95be-56472e044820',
-          // 'User-ID': '5410801c-faaf-4776-95be-56472e044820',
-          'X-Key': 'secretkeyjasanyaauth',
-          // 'Content-Type': 'application/jso3n',
-        },
-      }
-    )
+    const response = await axios.post('/auth/login', loginData)
     token.value = await response.data.data.token
-    sessionStorage.setItem('Token', response.data.data.token)
+    localStorage.setItem('Token', response.data.data.token.token)
     console.log(token.value)
   } catch (error) {
     console.log(error)
   }
 }
-
-// const login = async () => {
-//  try {
-//    const payload = { loginData }
-//    const config = {
-//      headers: {
-//        'App-ID': '5410801c-faaf-4776-95be-56472e044820',
-//        'User-ID': '5410801c-faaf-4776-95be-56472e044820',
-//        'X-Key': 'secretkeyjasanyaauth',
-//        'Content-Type': 'application/json',
-//      },
-//    }
-//    const url = 'https://dueit.my.id/api/auth/login'
-//    const response = await axios.post(url, payload, config)
-//    const data = response.data
-//    if (data) {
-//      console.log(data)
-//    } else {
-//      alert(data)
-//      console.log(data)
-//    }
-//  } catch (err) {
-//    alert(err)
-//  }
-// }
 
 // state untuk menampilkan password
 const state = reactive({
