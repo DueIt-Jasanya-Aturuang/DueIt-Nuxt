@@ -68,6 +68,8 @@ const loginData = reactive({
   remember_me: false,
 })
 
+const token = ref('')
+
 // const loginData = reactive({
 //   email_or_username: 'ibanrama29@gmail.com',
 //   password: '123456789',
@@ -88,45 +90,49 @@ const loginData = reactive({
 
 const login = async () => {
   try {
-    await axios.post('https://dueit.my.id/api/auth/login', loginData, {
-      headers: {
-        'App-ID': '5410801c-faaf-4776-95be-56472e044820',
-        // 'User-ID': '5410801c-faaf-4776-95be-56472e044820',
-        'X-Key': 'secretkeyjasanyaauth',
-        // 'Content-Type': 'application/jso3n',
-      },
-    })
+    const response = await axios.post(
+      'https://dueit.my.id/api/auth/login',
+      loginData,
+      {
+        headers: {
+          'App-ID': '5410801c-faaf-4776-95be-56472e044820',
+          // 'User-ID': '5410801c-faaf-4776-95be-56472e044820',
+          'X-Key': 'secretkeyjasanyaauth',
+          // 'Content-Type': 'application/jso3n',
+        },
+      }
+    )
+    token.value = await response.data.data.token
+    sessionStorage.setItem('Token', response.data.data.token)
+    console.log(token.value)
   } catch (error) {
     console.log(error)
   }
 }
 
-
 // const login = async () => {
-//   try {
-//     const payload = { loginData }
-//     const config = {
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'App-ID': '5410801c-faaf-4776-95be-56472e044820',
-//         'X-Key': 'secretkeyjasanyaauth',
-//         'X-Api-Key': 'apikeyauth',
-//         'Access-Control-Allow-Origin': '*',
-//         'Access-Control-Allow-Headers': '*',
-//       },
-//     }
-//     const url = 'https://auth.jasanya.tech'
-//     const response = await axios.post(url, payload, config)
-//     const data = response.data
-//     if (data) {
-//       console.log(payload)
-//     } else {
-//       alert(data)
-//       console.log(payload)
-//     }
-//   } catch (err) {
-//     alert(err)
-//   }
+//  try {
+//    const payload = { loginData }
+//    const config = {
+//      headers: {
+//        'App-ID': '5410801c-faaf-4776-95be-56472e044820',
+//        'User-ID': '5410801c-faaf-4776-95be-56472e044820',
+//        'X-Key': 'secretkeyjasanyaauth',
+//        'Content-Type': 'application/json',
+//      },
+//    }
+//    const url = 'https://dueit.my.id/api/auth/login'
+//    const response = await axios.post(url, payload, config)
+//    const data = response.data
+//    if (data) {
+//      console.log(data)
+//    } else {
+//      alert(data)
+//      console.log(data)
+//    }
+//  } catch (err) {
+//    alert(err)
+//  }
 // }
 
 // state untuk menampilkan password
