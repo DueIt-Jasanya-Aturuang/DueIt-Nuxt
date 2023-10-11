@@ -58,19 +58,10 @@
                   />
                 </button>
 
-                <UModal v-model="modalReminder" :ui="{ width: 'w-[400px]' }">
+                <UModal v-model="modalReminder" :ui="{ width: 'w-[27%]' }">
                   <DaySetPopUp />
                 </UModal>
               </div>
-              <!-- <button class="cursor-pointer" @click="showModal">
-                <Icon name="iconamoon:arrow-right-2" color="black" size="24" />
-              </button>
-              <div
-                v-show="modalReminder"
-                class="absolute bg-white w-full left-0"
-              >
-                <DaySetPopUp />
-              </div> -->
             </div>
             <div class="flex justify-between items-center">
               <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
@@ -105,14 +96,10 @@
                   />
                 </button>
 
-                <UModal v-model="modalPeriod" :ui="{ width: 'w-[400px]' }">
+                <UModal v-model="modalPeriod" :ui="{ width: 'w-[27%]' }">
                   <PeriodSetPopUp />
                 </UModal>
               </div>
-
-              <!-- <div v-show="modalPeriod" class="absolute bg-white w-full left-0">
-                <PeriodSetPopUp />
-              </div> -->
             </div>
             <div class="flex justify-between items-center">
               <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
