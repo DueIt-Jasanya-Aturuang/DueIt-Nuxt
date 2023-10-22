@@ -1,18 +1,19 @@
 import axios from 'axios'
 
-export default defineNuxtPlugin(() => {
-  // const defaultUrl = "http://103.82.92.34:8080";
+export default defineNuxtPlugin(_nuxtApp => {
+  const config = useRuntimeConfig().public
 
-  // const api = axios.create({
-  // 	baseURL: defaultUrl,
-  // 	headers: {
-  // 		common: {},
-  // 	},
-  // });
+  const axiosInstance = axios.create({
+    baseURL: 'https://dueit.my.id/api',
+    headers: {
+      'App-ID': config.APP_ID,
+      'X-Key': config.KEY,
+    },
+  })
 
   return {
     provide: {
-      axios,
+      axiosInstance,
     },
   }
 })

@@ -23,6 +23,7 @@
             </div>
           </div>
         </div>
+
         <ButtonsCommon class="w-full h-[40px]"
           >Tambah Kategori Baru</ButtonsCommon
         >

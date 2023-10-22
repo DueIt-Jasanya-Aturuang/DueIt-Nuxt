@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -10,6 +11,14 @@ export default defineNuxtConfig({
     },
   },
 
+  runtimeConfig: {
+    public: {
+      BASE_URL: process.env.BASE_URL,
+      APP_ID: process.env.APP_ID,
+      KEY: process.env.KEY,
+    },
+  },
+
   modules: [
     '@nuxthq/ui',
     '@nuxtjs/eslint-module',
@@ -17,6 +26,28 @@ export default defineNuxtConfig({
     'nuxt-icon',
     'nuxt-swiper',
   ],
+
+  routeRules: {
+    '/api/**': {
+      proxy: {
+        to: 'https://dueit.my.id/api/**',
+      },
+    },
+  },
+
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'https://dueit.my.id',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*',
+        },
+        prependPath: true,
+        changeOrigin: true,
+      },
+    },
+  },
 
   eslint: {
     lintOnStart: false,
@@ -28,9 +59,6 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'light',
   },
-
-  // main file scss
-  // css: ['~/assets/scss/main.scss'],
 
   vite: {
     css: {

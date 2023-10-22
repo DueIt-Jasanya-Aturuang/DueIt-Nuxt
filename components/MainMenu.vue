@@ -1,7 +1,7 @@
 <template>
   <div class="menu flex justify-between">
     <div class="flex">
-      <NuxtLink to="/" class="menu-nav">
+      <NuxtLink to="/" class="menu-nav" @click="checkLogin('/')">
         <Icon
           name="ic:round-home"
           :color="$route.path === '/' ? '#c7b407' : ''"
@@ -10,23 +10,24 @@
         <!-- <img src="~assets/icons/home-fill.svg" alt="" /> -->
         <span>Home</span>
       </NuxtLink>
-      <NuxtLink to="/history" class="menu-nav">
+      <NuxtLink to="/history" class="menu-nav" @click="checkLogin('/history')">
         <i class="dicon-history"></i>
         <span>Riwayat</span>
       </NuxtLink>
     </div>
     <div
       class="plus-circle bg-[#fffdcd] flex justify-center items-center relative"
+      @click="checkLogin('/')"
     >
       <img src="~/assets/icons/plus-colored.svg" />
       <div class="bottom-line absolute bottom-[-24px] bg-[#FFFDCD]"></div>
     </div>
     <div class="flex">
-      <NuxtLink to="/report" class="menu-nav">
+      <NuxtLink to="/report" class="menu-nav" @click="checkLogin('/report')">
         <i class="dicon-statistic"></i>
         <span>Laporan</span>
       </NuxtLink>
-      <NuxtLink to="/profile" class="menu-nav">
+      <NuxtLink to="/profile" class="menu-nav" @click="checkLogin('/profile')">
         <i class="dicon-profile"></i>
         <span>Profil</span>
       </NuxtLink>
@@ -34,7 +35,22 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const router = useRouter()
+
+const checkLogin = originalUrl => {
+  if (process.client) {
+    const token = localStorage?.getItem('Token') || null
+
+    if (!token) {
+      return router.push({ path: '/login' })
+    } else {
+      // console.log(originalUrl)
+      return router.push({ path: `${originalUrl}` })
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .menu {

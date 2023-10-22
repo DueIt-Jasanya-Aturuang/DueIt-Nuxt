@@ -1,3 +1,5 @@
+<!-- eslint-disable no-console -->
+<!-- eslint-disable require-await -->
 <template>
   <div
     class="container relative max-w-sm mx-auto flex place-items-center h-screen"
@@ -5,17 +7,17 @@
     <AuthForm>
       <template #page-title>Masuk Akun</template>
       <template #form-input>
-        <form action="/auth/otp">
+        <form @submit.prevent="login">
           <UFormGroup label="Email / Username" class="mb-6">
             <UInput
-              v-model="username"
+              v-model="loginData.email_or_username"
               placeholder="Masukkan email atau username"
               size="md"
             />
           </UFormGroup>
           <UFormGroup label="Kata Sandi">
             <UInput
-              v-model="password"
+              v-model="loginData.password"
               :type="state.showPassword ? 'text' : 'password'"
               placeholder="Masukkan kata sandi akun"
               size="md"
@@ -40,7 +42,9 @@
               >Lupa Password?</NuxtLink
             >
           </div>
-          <ButtonsCommon class="w-full mt-[34px]">Login</ButtonsCommon>
+          <ButtonsCommon class="w-full mt-[34px] bg-[#B6AE03]"
+            >Login</ButtonsCommon
+          >
         </form>
       </template>
     </AuthForm>
@@ -48,7 +52,8 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+const axios = useNuxtApp().$axiosInstance
 
 definePageMeta({
   // set ke layout custom / tanpa footer
@@ -56,8 +61,24 @@ definePageMeta({
 })
 
 // v-model untuk menampung data form
-const username = ref('')
-const password = ref('')
+const loginData = reactive({
+  email_or_username: 'bregsiaju@gmail.com',
+  password: '12345678',
+  remember_me: false,
+})
+
+const token = ref('')
+
+const login = async () => {
+  try {
+    const response = await axios.post('/auth/login', loginData)
+    token.value = await response.data.data.token
+    localStorage.setItem('Token', response.data.data.token.token)
+    console.log(token.value)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 // state untuk menampilkan password
 const state = reactive({
