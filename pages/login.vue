@@ -93,6 +93,7 @@ const login = async () => {
     const response = await axios.post('/auth/login', loginData)
     token.value = await response.data.data.token
     localStorage.setItem('Token', response.data.data.token.token)
+    localStorage.setItem('user', JSON.stringify(response.data.data.user))
     router.push('/')
   } catch (err) {
     state.error = err.response.data.errors

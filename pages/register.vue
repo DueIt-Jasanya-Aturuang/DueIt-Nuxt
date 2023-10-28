@@ -10,35 +10,59 @@
       </template>
       <template #form-input>
         <form @submit.prevent="onRegister">
-          <UFormGroup label="Nama Lengkap" class="mb-6">
+          <UFormGroup
+            label="Nama Lengkap"
+            class="mb-6"
+            required
+            :error="state.formErrors.full_name"
+          >
             <UInput
               v-model="registData.full_name"
               placeholder="Masukkan nama lengkap"
               size="md"
+              @keyup="state.formErrors.full_name = null"
             />
           </UFormGroup>
-          <UFormGroup label="Username" class="mb-6">
+          <UFormGroup
+            label="Username"
+            class="mb-6"
+            required
+            :error="state.formErrors.username"
+          >
             <UInput
               v-model="registData.username"
               placeholder="Masukkan username"
               size="md"
+              @keyup="state.formErrors.username = null"
             />
           </UFormGroup>
-          <UFormGroup label="Email" class="mb-6">
+          <UFormGroup
+            label="Email"
+            class="mb-6"
+            required
+            :error="state.formErrors.email"
+          >
             <UInput
               v-model="registData.email"
               type="email"
-              placeholder="Masukkan email"
+              placeholder="youremail@gmail.com"
               size="md"
+              @keyup="state.formErrors.email = null"
             />
           </UFormGroup>
-          <UFormGroup label="Kata Sandi" class="mb-6">
+          <UFormGroup
+            label="Kata Sandi"
+            class="mb-6"
+            required
+            :error="state.formErrors.password"
+          >
             <UInput
               v-model="registData.password"
               :type="state.showPassword ? 'text' : 'password'"
               placeholder="Masukkan kata sandi"
               size="md"
               class="relative"
+              @keyup="state.formErrors.password = null"
             >
               <!-- set icon password tampil/tidak -->
               <div
@@ -54,13 +78,18 @@
               </div>
             </UInput>
           </UFormGroup>
-          <UFormGroup label="Konfirmasi Kata Sandi">
+          <UFormGroup
+            label="Konfirmasi Kata Sandi"
+            required
+            :error="state.formErrors.re_password"
+          >
             <UInput
               v-model="registData.re_password"
               :type="state.showConfirmPass ? 'text' : 'password'"
               placeholder="Masukkan ulang kata sandi"
               size="md"
               class="relative"
+              @keyup="state.formErrors.re_password = null"
             >
               <!-- set icon password tampil/tidak -->
               <div
@@ -78,7 +107,9 @@
               </div>
             </UInput>
           </UFormGroup>
-          <ButtonsCommon class="w-full mt-6">Daftar</ButtonsCommon>
+          <ButtonsCommon type="submit" class="w-full mt-6"
+            >Daftar</ButtonsCommon
+          >
         </form>
       </template>
     </AuthForm>
@@ -87,11 +118,24 @@
 
 <script setup>
 import { reactive } from 'vue'
+const router = useRouter()
 const axios = useNuxtApp().$axiosInstance
 
 definePageMeta({
   // set ke layout custom / tanpa footer
   layout: 'minified',
+})
+
+const state = reactive({
+  showPassword: false,
+  showConfirmPass: false,
+  formErrors: {
+    full_name: null,
+    username: null,
+    email: null,
+    password: null,
+    re_password: null,
+  },
 })
 
 // v-model untuk menampung data form
@@ -105,20 +149,43 @@ const registData = reactive({
 
 const onRegister = async () => {
   try {
-    await axios.post('/auth/register', registData)
-  } catch (error) {
-    console.log(error)
+    if (registData.password !== registData.re_password) {
+      state.formErrors.re_password =
+        'Password tidak sesuai. Silakan cek kembali!'
+    } else {
+      await axios.post('/auth/register', registData)
+      await axios.post('/auth/otp', { email: registData.email })
+      localStorage.setItem('Token', response.data.data.token.token)
+      localStorage.setItem('user', JSON.stringify(response.data.data.user))
+      router.push({
+        path: '/auth/otp-confirm',
+        query: { email: registData.email },
+      })
+    }
+  } catch (err) {
+    const fullError = err.response.data.errors
+    if (fullError.full_name) {
+      state.formErrors.full_name = fullError.full_name.join(', ')
+    }
+    if (fullError.username) {
+      state.formErrors.username = fullError.username.join(', ')
+    }
+    if (fullError.email) {
+      state.formErrors.email = fullError.email.join(', ')
+    }
+    if (fullError.password) {
+      state.formErrors.password = fullError.password.join(', ')
+    }
   }
 }
-
-const state = reactive({
-  showPassword: false,
-  showConfirmPass: false,
-})
 </script>
 
 <style lang="scss" scoped>
 .container {
   padding: 60px 33px;
+
+  @media (min-width: 1024px) {
+    padding: 400px 33px;
+  }
 }
 </style>

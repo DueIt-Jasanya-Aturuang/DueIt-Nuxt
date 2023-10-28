@@ -63,7 +63,10 @@
         </div>
         <!-- Lower menu -->
         <div class="flex flex-col px-3">
-          <div class="border border-gray-300 rounded-2xl bg-white shadow-sm">
+          <div
+            class="border border-gray-300 rounded-2xl bg-white shadow-sm cursor-pointer"
+            @click="logout"
+          >
             <div class="flex items-center justify-between">
               <div class="flex w-[316px] h-[40px] p-2 gap-3 items-center">
                 <Icon name="ion:log-out" color="#DCD106" size="20" />
@@ -82,6 +85,9 @@
 </template>
 
 <script setup>
+const axios = useNuxtApp().$axiosInstance
+const router = useRouter()
+
 definePageMeta({
   // set ke layout custom / tanpa footer
   layout: 'header',
@@ -110,4 +116,26 @@ const midMenu = [
     urlPage: '/metode-pembayaran',
   },
 ]
+
+const logout = async () => {
+  try {
+    const userId = JSON.parse(localStorage.getItem('user')).id
+    console.log(userId)
+    await axios.post(
+      '/auth/logout',
+      {},
+      {
+        headers: {
+          Authorization: localStorage.getItem('Token'),
+          'User-ID': userId,
+        },
+      }
+    )
+    localStorage.removeItem('Token')
+    localStorage.removeItem('user')
+    router.push('/login')
+  } catch (err) {
+    console.log(err)
+  }
+}
 </script>

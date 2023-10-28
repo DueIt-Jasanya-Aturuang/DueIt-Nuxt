@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    '@nuxthq/ui',
+    '@nuxt/ui',
     '@nuxtjs/eslint-module',
     // dapat menggunakan semua icon di https://icones.js.org/
     'nuxt-icon',
