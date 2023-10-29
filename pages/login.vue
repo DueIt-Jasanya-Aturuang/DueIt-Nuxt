@@ -1,5 +1,3 @@
-<!-- eslint-disable no-console -->
-<!-- eslint-disable require-await -->
 <template>
   <div
     class="container relative max-w-sm mx-auto flex place-items-center h-screen"
@@ -8,14 +6,29 @@
       <template #page-title>Masuk Akun</template>
       <template #form-input>
         <form @submit.prevent="login">
-          <UFormGroup label="Email / Username" class="mb-6">
+          <UFormGroup
+            required
+            label="Email / Username"
+            class="mb-6"
+            :error="
+              state.error !== false
+                ? state.error.email_or_username
+                  ? state.error.email_or_username[0]
+                  : null
+                : null
+            "
+          >
             <UInput
               v-model="loginData.email_or_username"
               placeholder="Masukkan email atau username"
               size="md"
             />
           </UFormGroup>
-          <UFormGroup label="Kata Sandi">
+          <UFormGroup
+            required
+            label="Kata Sandi"
+            :error="state.error !== false ? state.error.password[0] : null"
+          >
             <UInput
               v-model="loginData.password"
               :type="state.showPassword ? 'text' : 'password'"
@@ -53,11 +66,17 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
+const router = useRouter()
 const axios = useNuxtApp().$axiosInstance
 
 definePageMeta({
   // set ke layout custom / tanpa footer
   layout: 'minified',
+})
+
+const state = reactive({
+  showPassword: false,
+  error: false,
 })
 
 // v-model untuk menampung data form
@@ -74,16 +93,12 @@ const login = async () => {
     const response = await axios.post('/auth/login', loginData)
     token.value = await response.data.data.token
     localStorage.setItem('Token', response.data.data.token.token)
-    console.log(token.value)
-  } catch (error) {
-    console.log(error)
+    localStorage.setItem('user', JSON.stringify(response.data.data.user))
+    router.push('/')
+  } catch (err) {
+    state.error = err.response.data.errors
   }
 }
-
-// state untuk menampilkan password
-const state = reactive({
-  showPassword: false,
-})
 </script>
 
 <style lang="scss" scoped>
